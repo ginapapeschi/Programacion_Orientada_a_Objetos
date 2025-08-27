@@ -1,0 +1,5 @@
+Tipo;Patente;CapacidadPasajeros;KmARecorrer;Dato1;Dato2
+C;ABC123;45;20.0;EmpresaSur;300;gasoil
+E;ELEC001;20;15.0;250;0.5
+C;DEF456;50;30.0;EmpresaNorte;350;gnc
+E;ELEC002;18;12.0;220;0.4
