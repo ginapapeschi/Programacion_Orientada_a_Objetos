@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Registrar entrega de paquete</h1>
+    
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+    
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            {{ success }}
+        </div>
+    {% endif %}
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="paquete_id">Número de envío del paquete:</label>
+            <select class="form-control" id="paquete_id" name="paquete_id" required>
+                <option value="" selected disabled>Seleccionar paquete</option>
+                {% for paquete in paquetes %}
+                        <option value="{{ paquete.id }}">{{ paquete.numeroenvio }} - Sucursal {{ paquete.idrepartidor }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="entregado">Estado de entrega:</label>
+            <select class="form-control" id="entregado" name="entregado" required>
+                <option value="" selected disabled>Selecciona opción</option>
+                <option value="true">Entregado</option>
+                <option value="false">No entregado</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea class="form-control" id="observaciones" name="observaciones" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Registrar entrega</button>
+    </form>
+
+
+{% endblock %}

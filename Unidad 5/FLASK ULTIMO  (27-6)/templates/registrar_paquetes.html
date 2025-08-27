@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Registrar paquete</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="peso">Peso:</label>
+            <input type="number" step="0.01" class="form-control" id="peso" name="peso" required>
+        </div>
+        <div class="form-group">
+            <label for="nomdestinatario">Nombre del destinatario:</label>
+            <input type="text" class="form-control" id="nomdestinatario" name="nomdestinatario" required>
+        </div>
+        <div class="form-group">
+            <label for="dirdestinatario">Dirección del destinatario:</label>
+            <input type="text" class="form-control" id="dirdestinatario" name="dirdestinatario" required>
+        </div>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        {% if error2 %}
+            <div class="alert alert-danger" role="alert">
+                {{ error2 }}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Registrar paquete</button>
+    </form>
+    <hr>
+    <!--
+    <h2>Listado de Paquetes</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Peso</th>
+                <th>Nombre del destinatario</th>
+                <th>Dirección del destinatario</th>
+                <th>Sucursal</th>
+                <th>Entregado</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paquete in paquete %}
+                <tr>
+                    <td>{{ paquete.peso }}</td>
+                    <td>{{ paquete.nomdestinatario }}</td>
+                    <td>{{ paquete.dirdestinatario }}</td>
+                    <td>{{ paquete.sucursal.numero }} - {{ paquete.sucursal.localidad }}</td>
+                    <td>
+                        {% if paquete.entregado %}
+                            Sí
+                        {% else %}
+                            No
+                        {% endif %}
+                    </td>
+                    <td>{{ paquete.observaciones }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+-->
+{% endblock %}

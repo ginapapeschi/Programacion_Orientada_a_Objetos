@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Consultar registros</h1>
+    <h3>Ingrese los datos y rango de fechas para consultar registros.</h3>
+
+    <form method="POST" class="mb-4">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="legajo">Legajo:</label>
+                <input type="text" class="form-control" id="legajo" name="legajo" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="ultimos_dni">Últimos 4 dígitos del DNI:</label>
+                <input type="text" class="form-control" id="ultimos_dni" name="ultimos_dni" maxlength="4" pattern="\d{4}" title="Ingrese los últimos 4 dígitos del DNI" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="desde">Desde:</label>
+                <input type="date" class="form-control" id="desde" name="desde" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="hasta">Hasta:</label>
+                <input type="date" class="form-control" id="hasta" name="hasta" required>
+            </div>
+        </div>
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        
+        {% if mensaje_no_registros %}
+            <div class="alert alert-danger" role="alert">
+                {{ mensaje_no_registros }}
+            </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+
+    {% if registros %}
+        <h2>Resultados:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora entrada</th>
+                    <th>Hora salida</th>
+                    <th>Dependencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reg in registros %}
+                    <tr>
+                        <td>{{ reg.fecha.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ reg.horaentrada.strftime('%H:%M:%S') if reg.horaentrada else '' }}</td>
+                        <td>{{ reg.horasalida.strftime('%H:%M:%S') if reg.horasalida else '' }}</td>
+                        <td>{{ reg.dependencia }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

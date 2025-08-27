@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Generar reportes</h1>
+        <h5 class="mb-4 text-center">Seleccione el tipo de reporte:</h5>
+
+        <form method="GET" class="d-flex justify-content-center">
+            <button formaction="{{ url_for('reportes') }}" 
+                    type="submit" 
+                    class="btn btn-primary btn-lg mx-2">
+                Reporte por trabajador
+            </button>
+            <button formaction="{{ url_for('reporte_general') }}" 
+                    type="submit" 
+                    class="btn btn-primary btn-lg mx-2">
+                Reporte general mensual
+            </button>
+        </form>
+    </div>
+{% endblock %}

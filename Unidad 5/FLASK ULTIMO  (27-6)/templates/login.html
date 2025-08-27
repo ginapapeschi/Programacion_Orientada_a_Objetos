@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa; /* Cambiar si deseas un color de fondo diferente */
+        }
+        .card {
+            padding: 2rem;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .custom-control-label {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card mx-auto"> <!-- mx-auto para centrar horizontalmente -->
+            <h1 class="card-title mb-4">Elegir tipo de usuario</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="despachanteRadio" name="user_type" value="despachante" class="custom-control-input" required>
+                        <label class="custom-control-label" for="despachanteRadio">Despachante</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="repartidorRadio" name="user_type" value="repartidor" class="custom-control-input" required>
+                        <label class="custom-control-label" for="repartidorRadio">Repartidor</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h1>¡Registro de paquete exitoso!</h1>
+        <hr>
+        <h5>Número de Envío: {{ numeroenvio }}</h5>
+        <h5>Sucursal Receptora: {{ sucursal.numero }} - {{ sucursal.provincia }} - {{ sucursal.localidad }}</h5>
+    </div>
+    <br>
+    <form method="POST">
+        <label>Elija qué desea hacer:</label>
+        <br>
+            <button type="submit" class="btn btn-primary" name="accion" value="registrar_salida">Registrar salida transporte</button>
+
+            <button type="submit" class="btn btn-primary" name="accion" value="registrar_llegada">Registrar llegada transporte</button>
+    </form>
+    <hr>
+{% endblock %}

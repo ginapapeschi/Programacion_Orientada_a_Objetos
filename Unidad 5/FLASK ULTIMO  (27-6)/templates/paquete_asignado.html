@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Asignación de paquetes exitosa</h1>
+    <div class="alert alert-success" role="alert">
+        Los paquetes seleccionados han sido asignados correctamente al repartidor.
+    </div>
+    <a href="{{ url_for('opciones_despachante') }}" class="btn btn-primary">Volver a opciones de despachante</a>
+{% endblock %}

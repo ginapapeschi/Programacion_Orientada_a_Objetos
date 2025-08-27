@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Login Repartidor</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="numero">Número de Repartidor:</label>
+            <input type="text" class="form-control" id="numero" name="numero" required>
+        </div>
+        <div class="form-group">
+            <label for="dni">DNI:</label>
+            <input type="text" class="form-control" id="dni" name="dni" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+{% endblock %}

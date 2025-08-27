@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Asignar paquetes a repartidor</h1>
+    
+    <!-- Formulario de asignación de paquetes -->
+    <form method="POST">
+        <div class="form-group">
+            <label for="repartidor_id">Repartidor:</label>
+            <select class="form-control" id="repartidor_id" name="repartidor_id" required>
+                <option value="" selected disabled>Seleccionar repartidor</option>
+                {% for repartidor in repartidores %}
+                    <option value="{{ repartidor.id }}">{{ repartidor.nombre }} - DNI: {{ repartidor.dni }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Paquetes disponibles para asignar:</label>
+            {% if paquetes %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Número de envío</th>
+                            <th>Destinatario</th>
+                            <th>Dirección</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for paquete in paquetes %}
+                            <tr>
+                                <td>{{ paquete.numeroenvio }}</td>
+                                <td>{{ paquete.nomdestinatario }}</td>
+                                <td>{{ paquete.dirdestinatario }}</td>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="paquete_{{ paquete.id }}" name="paquete_ids" value="{{ paquete.id }}">
+                                        <label class="form-check-label" for="paquete_{{ paquete.id }}">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No hay paquetes disponibles para asignar en esta sucursal.</p>
+            {% endif %}
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Asignar paquetes</button>
+    </form>
+    <br><br>
+{% endblock %}

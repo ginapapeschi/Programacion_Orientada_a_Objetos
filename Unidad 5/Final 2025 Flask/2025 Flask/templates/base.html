@@ -1,0 +1,53 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Instituto Nuevo Horizonte</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Instituto Nuevo Horizonte</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Opciones para el sistema de control de personal -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/registrar_entrada">Registrar entrada</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registrar_salida">Registrar salida</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/consultar">Consultar registros</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} mt-3 text-center" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

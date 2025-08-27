@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Transportes</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="numerotransporte">Número de Transporte:</label>
+            <input type="text" class="form-control" id="numerotransporte" name="numerotransporte" required>
+        </div>
+        <div class="form-group">
+            <label for="fechahorasalida">Fecha y Hora de Salida:</label>
+            <input type="datetime-local" class="form-control" id="fechahorasalida" name="fechahorasalida" required>
+        </div>
+        <div class="form-group">
+            <label for="idsucursal">Sucursal:</label>
+            <select class="form-control" id="idsucursal" name="idsucursal">
+                <option value="" selected disabled>Seleccionar sucursal</option>
+                {% for sucursal in sucursales %}
+                    <option value="{{ sucursal.id }}">{{ sucursal.numero }} - {{ sucursal.localidad }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Transporte</button>
+    </form>
+    <hr>
+    <h2>Listado de Transportes</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número de Transporte</th>
+                <th>Fecha y Hora de Salida</th>
+                <th>Fecha y Hora de Llegada</th>
+                <th>Sucursal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transporte in transportes %}
+                <tr>
+                    <td>{{ transporte.numerotransporte }}</td>
+                    <td>{{ transporte.fechahorasalida }}</td>
+                    <td>{{ transporte.fechahorallegada }}</td>
+                    <td>{{ transporte.sucursal }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

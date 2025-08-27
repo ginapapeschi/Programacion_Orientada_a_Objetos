@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+<h2>Lista de paquetes no entregados sin repartidor asignado:</h2>
+<hr>
+<div class="form-group">
+    <label for="sucursal_destino">Sucursal destino seleccionada: {{ sucursal_destino.numero }} - {{ sucursal_destino.provincia }} - {{ sucursal_destino.localidad }}</label>
+</div>
+<form method="POST">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Seleccionar paquete</th>
+                <th>Número de Envío</th>
+                <th>Dirección del Destinatario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paquete in paquetes_no_entregados %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="paquete_id[]" value="{{ paquete.id }}">
+                    </td>
+                    <td>{{ paquete.numeroenvio }}</td>
+                    <td>{{ paquete.dirdestinatario }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+    {% endif %}
+    {% if error2 %}
+            <div class="alert alert-danger" role="alert">
+                {{ error2 }}
+            </div>
+        {% endif %}
+    <button type="submit" class="btn btn-primary">Registrar transporte</button>
+</form>
+<hr>
+{% endblock %}
+

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Credenciales Incorrectas</h1>
+    <div class="alert alert-danger" role="alert">
+        Las credenciales ingresadas son incorrectas. Por favor, verifica tus datos e intenta nuevamente.
+    </div>
+    <a href="{{ url_for('login_repartidor') }}" class="btn btn-primary">Volver a la página de inicio de sesión</a>
+{% endblock %}

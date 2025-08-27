@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Registrar salida</h1>
+    <h3>Ingrese sus datos para registrar su salida.</h3>
+
+    {% if confirmar %}
+        <div class="alert alert-info mt-3">
+            <p>Registró entrada en la dependencia <strong>{{ dependencia }}</strong>.</p>
+            <p>¿Desea confirmar la salida?</p>
+
+            <form method="POST">
+                <input type="hidden" name="legajo" value="{{ legajo }}">
+                <input type="hidden" name="dni" value="{{ dni }}">
+                <input type="hidden" name="confirmar" value="1">
+                <button type="submit" class="btn btn-primary">Confirmar salida</button>
+                <a href="/registrar_salida" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    {% else %}
+        <form method="POST">
+            <div class="form-group">
+                <label for="legajo">Legajo:</label>
+                <input type="text" class="form-control" id="legajo" name="legajo" required>
+            </div>
+            <div class="form-group">
+                <label for="dni">Últimos 4 dígitos del DNI:</label>
+                <input type="text" class="form-control" id="dni" name="dni" maxlength="4" pattern="\d{4}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2">Registrar salida</button>
+
+            {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </form>
+    {% endif %}
+{% endblock %}

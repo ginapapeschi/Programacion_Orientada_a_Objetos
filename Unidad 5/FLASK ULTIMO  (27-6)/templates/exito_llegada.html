@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1>¡Registro de transporte exitoso!</h1>
+    <hr>
+    <h5>ID del transporte: {{ transporte.id }}</h5>
+    <h5>Sucursal de destino: {{ sucursal_llegada.numero }} - {{ sucursal_llegada.provincia }} - {{ sucursal_llegada.localidad }}</h5>
+    <h5>Fecha y hora de llegada: {{ transporte.fechahorallegada.strftime('%Y-%m-%d %H:%M') }}</h5>
+    <hr>
+{% endblock %}

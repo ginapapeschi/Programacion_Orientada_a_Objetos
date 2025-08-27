@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Bienvenido a LogiPack</h1>
+    <h3>Como despachante, seleccione la acción a realizar</h3>
+    <form method="POST">
+        <div class="form-group">
+            <label for="user_type">Acción a realizar:</label>
+            <select class="form-control" id="user_type" name="user_type" required>
+                <option value="" selected disabled>Seleccionar la opción</option>
+                <option value="Registrar paquetes">Registrar paquetes</option>
+                <option value="Asignar paquetes">Asignar paquetes</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+{% endblock %}

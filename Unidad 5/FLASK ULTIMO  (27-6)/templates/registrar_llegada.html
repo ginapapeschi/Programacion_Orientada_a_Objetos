@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Listado de transportes</h1>
+    <h5>ID de la sucursal seleccionada: {{ idsucursal }}</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número de transporte</th>
+                <th>Fecha y hora de salida</th>
+                <th>Sucursal de llegada</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transporte in transportes %}
+                <tr>
+                    {% if not transporte.fechahorallegada %}
+                        <td>{{ transporte.numerotransporte }}</td>
+                        <td>{{ transporte.fechahorasalida.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>{{ transporte.sucursal }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="transporte_num">Transporte:</label>
+            <select class="form-control" id="transporte_num" name="transporte_num" required>
+                <option value="" selected disabled>Seleccionar transporte</option>
+                {% for transporte in transportes %}
+                    {% if not transporte.fechahorallegada %}
+                    <option value="{{ transporte.numerotransporte }}">{{ transporte.id }} - {{ transporte.numerotransporte }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Registrar llegada</button>
+        <br><br>
+    </form>
+    <hr>
+{% endblock %}

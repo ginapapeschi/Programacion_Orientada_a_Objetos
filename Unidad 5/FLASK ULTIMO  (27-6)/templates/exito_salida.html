@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1>¡Registro de transporte exitoso!</h1>
+    <hr>
+    <h5>Sucursal de destino: {{ sucursal_destino.numero }} - {{ sucursal_destino.provincia }} - {{ sucursal_destino.localidad }}</h5>
+    <h5>Fecha y hora de salida: {{ transporte.fechahorasalida.strftime('%Y-%m-%d %H:%M') }}</h5>
+    <hr>
+<!--    
+    <form method="POST">
+        <label>Elija qué desea hacer:</label>
+        <br>
+            <button type="submit" class="btn btn-primary">Volver al inicio</button>
+            <button type="submit" class="btn btn-primary">Registrar salida transporte</button>
+            <button type="submit" class="btn btn-primary">Registrar llegada transporte</button>
+        <br><br>
+    </form>
+    <hr>
+-->
+
+<!--
+    {% if paquetes |length > 1 %}
+        <h2>Paquetes transportados:</h2>
+    {% else %}
+        <h2>Paquete transportado:</h2>
+    {% endif %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número de Envío</th>
+                <th>Dirección del Destinatario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paquete in paquetes %}
+                <tr>
+                    <td>{{ paquete.numeroenvio }}</td>
+                    <td>{{ paquete.dirdestinatario }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+-->
+{% endblock %}

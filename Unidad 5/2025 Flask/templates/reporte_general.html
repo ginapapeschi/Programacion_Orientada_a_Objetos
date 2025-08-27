@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Reporte general mensual</h1>
+
+<form method="POST" class="mb-4">
+    <div class="form-row align-items-end">
+        <div class="col-md-3 mb-3">
+            <label for="mes">Seleccione el mes:</label>
+            <input type="month" class="form-control" id="mes" name="mes" required
+                   value="{{ request.form.get('mes', '') }}">
+        </div>
+        <div class="col-auto mb-3">
+            <button type="submit" class="btn btn-primary">Generar</button>
+        </div>
+    </div>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+</form>
+
+{% if nombre_mes and resultados %}
+    <h2>Reporte para el mes de {{ nombre_mes }}</h2>
+{% endif %}
+
+{% if resultados %}
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Legajo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dependencia</th>
+                <th>Total de horas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in resultados %}
+                <tr>
+                    <td>{{ r.legajo }}</td>
+                    <td>{{ r.nombre }}</td>
+                    <td>{{ r.apellido }}</td>
+                    <td>{{ r.dependencia }}</td>
+                    <td>{{ r.horas_trabajadas }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% elif request.method == 'POST' and not error %}
+    <div class="alert alert-info">No se encontraron registros para ese mes.</div>
+{% endif %}
+{% endblock %}

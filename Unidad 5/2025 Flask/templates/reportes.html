@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Reporte por trabajador</h1>
+
+<form method="POST" class="mb-4">
+    <div class="form-row">
+        <div class="col-md-3 mb-3">
+            <label for="desde">Fecha desde:</label>
+            <input type="date" class="form-control" id="desde" name="desde" required
+                   value="{{ request.form.get('desde', '') }}">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="hasta">Fecha hasta:</label>
+            <input type="date" class="form-control" id="hasta" name="hasta" required
+                   value="{{ request.form.get('hasta', '') }}">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="legajo">Legajo:</label>
+            <input type="text" class="form-control" id="legajo" name="legajo" required
+                   value="{{ request.form.get('legajo', '') }}">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="ultimos_dni">Últimos 4 dígitos del DNI:</label>
+            <input type="text" class="form-control" id="ultimos_dni" name="ultimos_dni" maxlength="4" required
+                   value="{{ request.form.get('ultimos_dni', '') }}">
+        </div>
+    </div>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Generar reporte</button>
+</form>
+
+{% if resultados %}
+    <h2>Resultados:</h2>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Legajo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dependencia</th>
+                <th>Fecha</th>
+                <th>Horas trabajadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in resultados %}
+                <tr>
+                    <td>{{ r.legajo }}</td>
+                    <td>{{ r.nombre }}</td>
+                    <td>{{ r.apellido }}</td>
+                    <td>{{ r.dependencia }}</td>
+                    <td>{{ r.fecha.strftime('%d/%m/%Y') }}</td>
+                    <td>{{ r.horas_trabajadas }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+{% endblock %}

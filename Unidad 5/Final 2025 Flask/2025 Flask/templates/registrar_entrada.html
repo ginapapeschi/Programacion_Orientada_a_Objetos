@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Registrar entrada</h1>
+    <h3>Ingrese sus datos para registrar su entrada.</h3>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="legajo">Legajo:</label>
+            <input type="text" class="form-control" id="legajo" name="legajo" required>
+        </div>
+        <div class="form-group">
+            <label for="dni">Últimos 4 dígitos del DNI:</label>
+            <input type="text" class="form-control" id="dni" name="dni" maxlength="4" pattern="\d{4}" required>
+        </div>
+        <div class="form-group">
+            <label for="dependencia">Dependencia:</label>
+            <select class="form-control" id="dependencia" name="dependencia" required>
+                <option value="" selected disabled>Seleccionar dependencia</option>
+                <option value="D01">D01 - Edificio Central</option>
+                <option value="D02">D02 - Talleres</option>
+                <option value="D03">D03 - Centro Deportivo</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar entrada</button>
+    </form>
+{% endblock %}
