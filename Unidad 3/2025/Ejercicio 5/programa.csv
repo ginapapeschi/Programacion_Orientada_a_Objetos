@@ -1,0 +1,12 @@
+Tipo;Canal;Nombre;Horario de Inicio;Horario de Finalización
+T;1;Noticias Mañana;06:00;08:00
+T;2;Cocina Fácil;08:00;09:30
+R;98.3 MHz;Magazine Diario;09:30;12:00
+R;98.3 MHz;Noticias Mediodía;12:00;13:00
+T;1;Telenovela Clásica;13:00;14:30
+T;3;Cine de la Tarde;14:30;16:30
+T;2;Serie Juvenil;16:30;18:00
+R;101.1 MHz;Noticias Central;18:00;19:00
+T;2;Reality Show;19:00;21:00
+T;3;Película Estelar;21:00;23:00
+R;101.1 MHz;Late Night Show;23:00;00:30

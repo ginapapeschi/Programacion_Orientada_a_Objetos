@@ -1,0 +1,7 @@
+Tipo;Nombre;Audiencia;Canal;Cantidad de Canales;Nombre Emisora;Frecuencia;Tipo PublicaciÃ³n;Periodicidad
+T;TV Nacional;120000;1;5;;;;
+R;Radio Ciudad;350000;;;FM 98.3;98.3 MHz;;
+P;El Diario;500000;;;;;Diario;Diaria
+T;Canal 5 Noticias;800000;3;3;;;;
+R;Radio Rock;200000;;;Rock FM;101.1 MHz;;
+P;Revista Ciencia Hoy;150000;;;;;Revista;Mensual
